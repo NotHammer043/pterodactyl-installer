@@ -42,17 +42,17 @@ export PTERODACTYL_WINGS_VERSION=""
 export PATH="$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
 # OS
-export OS=""
-export OS_VER_MAJOR=""
-export CPU_ARCHITECTURE=""
-export ARCH=""
-export SUPPORTED=false
+export OS="ubuntu"
+export OS_VER_MAJOR="24"
+export CPU_ARCHITECTURE="x86_64"
+export ARCH="amd64"
+export SUPPORTED=true
 
 # download URLs
 export PANEL_DL_URL="https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz"
 export WINGS_DL_BASE_URL="https://github.com/pterodactyl/wings/releases/latest/download/wings_linux_"
 export MARIADB_URL="https://downloads.mariadb.com/MariaDB/mariadb_repo_setup"
-export GITHUB_BASE_URL=${GITHUB_BASE_URL:-"https://raw.githubusercontent.com/pterodactyl-installer/pterodactyl-installer"}
+export GITHUB_BASE_URL=${GITHUB_BASE_URL:-"https://raw.githubusercontent.com/NotHammer043/pterodactyl-installer"}
 export GITHUB_URL="$GITHUB_BASE_URL/$GITHUB_SOURCE"
 
 # Colors
@@ -523,28 +523,6 @@ arm64 | aarch64)
 *)
   error "Only x86_64 and arm64 are supported!"
   exit 1
-  ;;
-esac
-
-case "$OS" in
-ubuntu)
-  [ "$OS_VER_MAJOR" == "20" ] && SUPPORTED=true
-  [ "$OS_VER_MAJOR" == "22" ] && SUPPORTED=true
-  [ "$OS_VER_MAJOR" == "24" ] && SUPPORTED=true
-  export DEBIAN_FRONTEND=noninteractive
-  ;;
-debian)
-  [ "$OS_VER_MAJOR" == "10" ] && SUPPORTED=true
-  [ "$OS_VER_MAJOR" == "11" ] && SUPPORTED=true
-  [ "$OS_VER_MAJOR" == "12" ] && SUPPORTED=true
-  export DEBIAN_FRONTEND=noninteractive
-  ;;
-rocky | almalinux)
-  [ "$OS_VER_MAJOR" == "8" ] && SUPPORTED=true
-  [ "$OS_VER_MAJOR" == "9" ] && SUPPORTED=true
-  ;;
-*)
-  SUPPORTED=false
   ;;
 esac
 
